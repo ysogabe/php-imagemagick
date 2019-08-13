@@ -35,7 +35,7 @@ RUN set -x \
 RUN pecl install imagick
 
 # ImageMgick INI
-RUN echo "; configuration for php imageMagick modul" > /etc/php/7.3/mods-available/imagemagick.ini \
+RUN echo "; configuration for php imageMagick module" > /etc/php/7.3/mods-available/imagemagick.ini \
  && echo "; priority=20" >> /etc/php/7.3/mods-available/imagemagick.ini \
  && echo "extension=imagick.so" >> /etc/php/7.3/mods-available/imagemagick.ini \
  && ln -s /etc/php/7.3/mods-available/imagemagick.ini /etc/php/7.3/cli/conf.d/20-imagemagick.ini \
