@@ -25,6 +25,7 @@ RUN set -x \
     php7.3-xml \
     php7.3-dev \
     php7.3-curl \
+    php7.3-bz2 \
     unzip \
     imagemagick \
     libmagickwand-dev \
