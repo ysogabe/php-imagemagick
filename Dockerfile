@@ -30,7 +30,6 @@ RUN set -x \
     imagemagick \
     libmagickwand-dev \
     pkg-config \
-    nginx \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 RUN pecl install imagick
@@ -58,13 +57,7 @@ RUN set -x \
  && chown ${USER_NAME}:${USER_NAME} /app \
  && chmod 777 /app
 
-COPY settings/laravel /etc/nginx/sites-available/laravel
 COPY settings/www.conf /etc/php/7.3/fpm/pool.d/www.conf
-COPY settings/docker-entrypoint.sh /
-RUN set -x \
- && rm -rf /etc/nginx/sites-enabled/default \
- && ln -s /etc/nginx/sites-available/laravel /etc/nginx/sites-enabled/laravel \
- && chmod +x /docker-entrypoint.sh
 
 # composer Setting
 USER ${USER_NAME}
@@ -72,10 +65,9 @@ RUN set -x \
  && composer config -g repositories.packagist composer https://packagist.jp \
  && composer global require hirak/prestissimo
 
-EXPOSE 80
+EXPOSE 9000
 WORKDIR /app
 VOLUME /app
 
-USER root
 STOPSIGNAL SIGTERM
-ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["php-fpm"]
