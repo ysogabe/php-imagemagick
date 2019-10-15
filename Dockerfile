@@ -19,13 +19,14 @@ RUN set -x \
  && apt install -y \
     php7.3 \
     php7.3-fpm \
-    php7.3-mysq \
+    php7.3-mysql \
     php7.3-mbstring \
     php7.3-zip \
     php7.3-xml \
     php7.3-dev \
     php7.3-curl \
     php7.3-bz2 \
+    php7.3-pgsql \
     unzip \
     imagemagick \
     libmagickwand-dev \
